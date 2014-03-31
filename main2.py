@@ -20,18 +20,18 @@ class circle(pygame.sprite.Sprite):
         self.pos = vector.Vector2D(x, y)
 
 
-        class Game:
-            def __init__(self):
-                self.obstacles = pygame.sprite.Group()
-                self.obstacles.add(Obstacle(Screen_Size[0]/2, Screen_Size[1]/2))
+class Game:
+    def __init__(self):
+        self.obstacles = pygame.sprite.Group()
+        self.obstacles.add(Obstacle(Screen_Size[0]/2, Screen_Size[1]/2))
 
-                def run(self):
-                    while True:
-                        for event in pygame.event.get():
-                            if event.type == QUIT:
-                                exit()
-                                surface.blit(image,(0,0))
-                                pygame.display.update()
+        def run(self):
+            while True:
+                for event in pygame.event.get():
+                    if event.type == QUIT:
+                        exit()
+                        surface.blit(image,(0,0))
+                        pygame.display.update()
 
 
 def main():
