@@ -1,8 +1,11 @@
+from config import Config
+import pygame
+from World import World
 class Game(object):
 	def __init__(self):
 		self.cfg = Config()
 		self.clock = pygame.time.Clock()
-		self.screen = Screen(self.cfg)
+		self.screen = World()
 
 		self.shots = pygame.sprite.Group()
 
@@ -12,11 +15,6 @@ class Game(object):
 		self.players = pygame.sprite.Group()
 		self.players.add(self.player1.spaceship)
 		self.players.add(self.player2.spaceship)
-
-
-
-
-	
 
 	def update(self):
 		self.players.update()
