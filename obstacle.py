@@ -12,6 +12,6 @@ class Obstacle(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         radius = Obstacle.defaultradius
         diameter = radius * 2
-        self.pos = vector.Vector2D(cx,cy)
+        self.pos = vector.Vector(cx,cy)
         self.image = pygame.Surface((diameter, diameter))
         self.rect = pygame.Rect(int(cx) - radius, int(cy) - radius, diameter, diameter)

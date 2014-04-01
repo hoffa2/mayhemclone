@@ -5,6 +5,7 @@ import pygame
 from pygame import *
 import math
 from config import Config
+from World import World
 
 class Player():
 	def __init__(self, num, shotGroup):
@@ -18,8 +19,17 @@ class Player():
 		#self.stats = Status()
 
 	def update(self):
-		self.spaceship.pos += self.spaceship.vel
+		self.spaceship.pos += self.spaceship.vel + self.blackhole()
 		self.spaceship.vel *= 0.3
+		print "player"
+
+	def blackhole(self):
+		print (self.spaceship.pos - World.blackhole.pos).magnitude()
+		if (self.spaceship.pos - World.blackhole.pos).magnitude() < 100:
+			print World.blackhole.pos
+			return (self.spaceship.pos - World.blackhole.pos)
+		else:
+			return 0
 
 	def force(self, v):
 		self.spaceship.vel += v
