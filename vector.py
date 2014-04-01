@@ -1,11 +1,12 @@
+import math
 class Vector(object):
 	def __init__(self, x, y):
 		self.x = x
 		self.y = y
-		
+
 	def __repr__(self):
 		return "Vector(%s, %s)" % (self.x, self.y)
-			
+
 	def __add__(self, b):
 		""" Addition. Returns a new vector. """
 		return Vector(self.x + b.x, self.y + b.y)
@@ -16,9 +17,9 @@ class Vector(object):
 
 	def __mul__(self, b):
 		""" Multiplication by a scalar
-		
+
 		Note that the scalar must be to the right.
-		
+
 		"""
 		try:
 			b = float(b)
@@ -73,7 +74,7 @@ class Vector(object):
 		return (self - b).magnitude()
 
 	def angle(self):
-		""" Calculates the angle of the vector (radians) """ 
+		""" Calculates the angle of the vector (radians) """
 		return math.atan2(self.x, self.y)
 
 	def rotate(self, theta):

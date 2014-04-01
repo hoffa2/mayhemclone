@@ -1,5 +1,6 @@
 from pygame import *
 import pygame
+import math
 
 class Lazer(pygame.sprite.Sprite):
 	def __init__(self, pos, vel):

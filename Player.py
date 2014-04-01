@@ -1,11 +1,16 @@
 from spaceship import Spaceship
+import math
+from Lazer import Lazer
+import pygame
+from pygame import *
+import math
+
 class Player():
 	def __init__(self, num, shotGroup):
 		self.num = num
 		self.spaceship = Spaceship(100, 100, num, -1, -1)
 		self.shots = shotGroup
 		self.lock = False
-
 
 	def update(self):
 		self.spaceship.pos += self.spaceship.vel

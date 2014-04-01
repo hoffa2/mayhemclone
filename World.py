@@ -9,9 +9,9 @@ from obstacle import *
 class World:
     def __init__(self):
         pygame.init()
-        pygame.display.set_mode((Config.width, Config.height))
+        pygame.display.set_mode((1300, 700))
         self.platforms = self.init_platforms()
-        self.backgroundimage = pygame.transform.scale(self.loadimage("back.jpeg"), (Config.Screen_Size[0], Config.Screen_Size[1]))
+        self.background = pygame.transform.scale(self.loadimage("back.jpeg"), (Config.Screen_Size[0], Config.Screen_Size[1]))
         self.screen = pygame.display.get_surface()
 
     def loadimage(self, filename):
@@ -27,6 +27,7 @@ class World:
         self.obstacles = pygame.sprite.Group()
         self.obstacles.add(Obstacle(Config.Screen_Size[0]/2, Config.Screen_Size[1]/2))
 
-    def draw():
-        self.screen.blit(self.background, (0,0))
+    def draw(self):
+        self.screen.blit(self.background, self.background.get_rect())
+        self.platforms.draw(self.screen)
 
