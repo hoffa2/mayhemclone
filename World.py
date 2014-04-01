@@ -15,12 +15,12 @@ class World:
         self.screen = pygame.display.get_surface()
 
     def loadimage(self, filename):
-        return pygame.image.load(filename).convert()
+        return pygame.image.load(filename)
 
     def init_platforms(self):
         platforms = pygame.sprite.Group()
-        platforms.add(Platform(100, 600, self.loadimage("platform.jpeg")))
-        platforms.add(Platform(1000, 600, self.loadimage("platform.jpeg")))
+        platforms.add(Platform(Config.platform1[0], Config.platform1[1], self.loadimage("platform.png")))
+        platforms.add(Platform(Config.platform2[0], Config.platform2[1], self.loadimage("platform.png")))
         return platforms
 
     def init_obstacles(self):
