@@ -6,6 +6,7 @@ from pygame import *
 import math
 from config import Config
 from World import World
+from Status import Status
 
 class Player():
 	def __init__(self, num, shotGroup):
@@ -16,20 +17,11 @@ class Player():
 			self.spaceship = Spaceship(Config.platform2[0] + 100, Config.platform2[1], num, -1, -1)
 		self.shots = shotGroup
 		self.lock = False
-		#self.stats = Status()
+		self.stats = Status()
 
 	def update(self):
-		self.spaceship.pos += self.spaceship.vel + self.blackhole()
+		self.spaceship.pos += self.spaceship.vel
 		self.spaceship.vel *= 0.3
-		print "player"
-
-	def blackhole(self):
-		print (self.spaceship.pos - World.blackhole.pos).magnitude()
-		if (self.spaceship.pos - World.blackhole.pos).magnitude() < 100:
-			print World.blackhole.pos
-			return (self.spaceship.pos - World.blackhole.pos)
-		else:
-			return 0
 
 	def force(self, v):
 		self.spaceship.vel += v
@@ -41,21 +33,21 @@ class Player():
 		self.shots.add(shot)
 		self.lock = True
 		pygame.time.set_timer(USEREVENT+self.num, 200)
-		print "player", self.num, "fire"
+		#print "player", self.num, "fire"
 
 
 	def thrust(self):
-		print "player", self.num, "thrust"
+		#print "player", self.num, "thrust"
 		self.spaceship.vel += (self.spaceship.vel + self.spaceship.angle).normalized()
 
 	def turn_right(self):
-		print "player", self.num, "right"
+		#print "player", self.num, "right"
 		self.spaceship.vel = self.spaceship.vel.rotate(math.radians(4))
 		self.spaceship.angle = self.spaceship.angle.rotate(math.radians(4))
 		#self.spaceship.vel = Vector(math.cos(tmp.angle()),-math.sin(tmp.angle()))
 
 	def turn_left(self):
-		print "player", self.num, "left"
+		#print "player", self.num, "left"
 		self.spaceship.vel = self.spaceship.vel.rotate(math.radians(-4))
 		self.spaceship.angle = self.spaceship.angle.rotate(math.radians(-4))
 		# = Vector(math.cos(tmp.angle()),-math.sin(tmp.angle()))

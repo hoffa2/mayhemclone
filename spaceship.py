@@ -10,11 +10,12 @@ import vector
 class Spaceship(pygame.sprite.Sprite):
 
 
-    def __init__(self, x, y, num, speedx = 1, speedy = 1):
+    def __init__(self, x, y, num, speedx = 0, speedy = 0):
         pygame.sprite.Sprite.__init__(self)
         self.pos = Vector(x, y)
         self.vel = Vector(speedx, speedy)
         self.angle = self.vel
+        self.respawnpos = Vector(x, y)
         if num == 1:
             self.image = pygame.image.load(os.path.join("res", "Ship1.png"))
         elif num ==2:
@@ -27,17 +28,17 @@ class Spaceship(pygame.sprite.Sprite):
 
     def update(self):
         self.pos += self.vel + self.blackhole()
+
         self.vel *= 0.9
-        print "spaceship"
         self.image = pygame.transform.rotate(self.Cimage, math.degrees(self.angle.angle()) + 180)
         self.rect = self.image.get_rect()
         self.rect.centerx = self.pos.x
         self.rect.centery = self.pos.y
 
     def blackhole(self):
-        print (self.pos - Config.middle_of_screen).magnitude()
-        if (self.pos - Config.middle_of_screen).magnitude() < 250:
-            return (Config.middle_of_screen - self.pos) / 60
+        length = (self.pos - Config.middle_of_screen).magnitude()
+        if length < 250:
+            return (Config.middle_of_screen - self.pos) /length * 4
         else:
             return vector.Vector(0,0)
 

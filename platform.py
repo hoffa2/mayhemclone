@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 from config import *
 import vector
-pygame.init()
 
 class Platform(pygame.sprite.Sprite):
     def __init__(self, x, y, image):

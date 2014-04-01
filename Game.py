@@ -2,6 +2,7 @@ from config import Config
 import pygame
 from World import World
 from Player import Player
+
 class Game(object):
 	def __init__(self):
 		self.cfg = Config()
@@ -19,7 +20,7 @@ class Game(object):
 
 	def update(self):
 		self.players.update()
-		self.shots.update()
+		self.shots.update(self.shots)
 
 	def draw(self):
 		self.screen.draw()
