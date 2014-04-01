@@ -1,6 +1,7 @@
 from config import Config
 import pygame
 from World import World
+from Player import Player
 class Game(object):
 	def __init__(self):
 		self.cfg = Config()
