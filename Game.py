@@ -76,13 +76,20 @@ class Game(object):
 
 	def collidepad(self):
 		if pygame.sprite.spritecollideany(self.player1.spaceship, self.screen.platforms):
+			self.player1.spaceship.on_pad = True
 			if self.player1.fuel.value < 500:
 				self.player1.fuel.value += 3
 				self.player1.Bullets.value = 10
+		else:
+			self.player1.spaceship.on_pad = False
 		if pygame.sprite.spritecollideany(self.player2.spaceship, self.screen.platforms):
+			self.player2.spaceship.on_pad = True
 			if self.player2.fuel.value < 500:
 				self.player2.fuel.value += 3
 				self.player2.Bullets.value = 10
+		else:
+			self.player2.spaceship.on_pad = False
+
 
 
 	def draw(self):

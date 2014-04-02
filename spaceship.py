@@ -14,6 +14,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.vel = Vector(speedx, speedy)
         self.angle = self.vel
         self.lock = False
+        self.on_pad = True
         self.platformpos = Vector(x,y)
         self.respawnpos = Vector(x, y)
         if num == 1:
@@ -47,6 +48,8 @@ class Spaceship(pygame.sprite.Sprite):
             self.vel.y = 1
 
     def blackhole(self):
+        if self.on_pad:
+            return Vector(0,0)
         length = (self.pos - Config.middle_of_screen).magnitude()
         if length < 250:
             return (Config.middle_of_screen - self.pos) /length *4
