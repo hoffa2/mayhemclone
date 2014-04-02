@@ -28,8 +28,8 @@ class Spaceship(pygame.sprite.Sprite):
 
     def update(self):
         self.pos += self.vel + self.blackhole()
-
         self.vel *= 0.9
+        self.pos = self.keepinside()
         self.image = pygame.transform.rotate(self.Cimage, math.degrees(self.angle.angle()) + 180)
         self.rect = self.image.get_rect()
         self.rect.centerx = self.pos.x
@@ -41,4 +41,18 @@ class Spaceship(pygame.sprite.Sprite):
             return (Config.middle_of_screen - self.pos) /length * 4
         else:
             return vector.Vector(0,0)
+    def keepinside(self):
+
+
+
+
+
+
+
+
+
+
+
+
+
 

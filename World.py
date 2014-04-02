@@ -12,10 +12,14 @@ class World:
         pygame.display.set_mode((1300, 700))
         self.platforms = self.init_platforms()
         self.background = pygame.transform.scale(self.loadimage("back.jpeg"), (Config.Screen_Size[0], Config.Screen_Size[1]))
+        self.backgroundrect = self.background.get_rect()
         self.screen = pygame.display.get_surface()
 
     def loadimage(self, filename):
         return pygame.image.load(filename)
+
+    def get_rect(self):
+        return self.backgroundrect
 
     def init_platforms(self):
         platforms = pygame.sprite.Group()
