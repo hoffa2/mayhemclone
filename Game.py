@@ -9,10 +9,10 @@ class Game(object):
 		self.clock = pygame.time.Clock()
 		self.screen = World()
 
-		self.shots = pygame.sprite.Group()
 
-		self.player1 = Player(1, self.shots)
-		self.player2 = Player(2, self.shots)
+
+		self.player1 = Player(1)
+		self.player2 = Player(2)
 
 		self.stats = pygame.sprite.Group()
 		self.players = pygame.sprite.Group()
@@ -26,18 +26,38 @@ class Game(object):
 	def update(self):
 		self.players.update()
 		self.stats.update()
-		self.shots.update(self.shots, self.screen)
+		self.player1.shots.update(self.player1.shots, self.screen)
+		self.player2.shots.update(self.player2.shots, self.screen)
 		self.collision()
 
 	def collision(self):
-		pass
-		#collide = pygame.sprite.collide_rect()
+		if pygame.sprite.collide_rect(self.player1.spaceship, self.player2.spaceship):
+			self.player1.Lives.value -= 2
+			self.player2.Lives.value -= 2
+			self.players.set_pos()
+
+		sprite = pygame.sprite.spritecollideany(self.player1.spaceship, self.player2.shots)
+		if sprite != None:
+			self.player1.Lives.value -= 2
+			self.player2.shots.remove(sprite)
+			self.player2.score.value += 1
+
+
+		sprite = pygame.sprite.spritecollideany(self.player2.spaceship, self.player1.shots)
+		if sprite != None:
+			self.player2.Lives.value -= 2
+			self.player1.shots.remove(sprite)
+			self.player1.score.value += 1
+
+
+
 
 	def draw(self):
 		self.screen.draw()
 		self.stats.draw(self.screen.screen)
 		self.players.draw(self.screen.screen)
-		self.shots.draw(self.screen.screen)
+		self.player1.shots.draw(self.screen.screen)
+		self.player2.shots.draw(self.screen.screen)
 		pygame.display.flip()
 
 	def handle_events(self):

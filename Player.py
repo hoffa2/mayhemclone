@@ -9,7 +9,7 @@ from World import World
 from Status import Status
 
 class Player():
-	def __init__(self, num, shotGroup):
+	def __init__(self, num):
 		self.num = num
 		if num == 1:
 			self.textpos = (100, 50)
@@ -17,20 +17,19 @@ class Player():
 		else:
 			self.textpos = (Config.height - 100, 50)
 			self.spaceship = Spaceship(Config.platform2[0] + 100, Config.platform2[1], num, -1, -1)
-		self.shots = shotGroup
-
+		self.shots = pygame.sprite.Group()
 		self.lock = False
 		self.stats = self.init_stats()
 
 	def update(self):
 		self.spaceship.update()
 		self.stats.update()
-		print "ello"
+		self.shots.update()
 
 	def draw(self):
 		self.spaceship.draw()
 		self.stats.draw()
-		print "ello"
+		self.shots.draw()
 
 	def init_stats(self):
 		status = pygame.sprite.Group()
