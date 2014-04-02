@@ -9,12 +9,12 @@ class Status(pygame.sprite.Sprite):
         self.name = name
         self.text = str(self.name) + str(self.value)
         self.center = pos
-        self.font = pygame.font.SysFont("None", 15)
+        self.font = pygame.font.SysFont("None", 25)
         self.num = num
         self.update()
 
     def update(self):
-        self.text = str(self.name) + str(self.value)
+        self.text = str(self.name) + " "+ str(self.value)
         self.image = self.font.render(self.text, 1, pygame.Color("yellow"))
         self.rect = self.image.get_rect()
         self.rect.center = self.center

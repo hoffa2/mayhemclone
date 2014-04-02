@@ -21,15 +21,6 @@ class Player():
 		self.lock = False
 		self.stats = self.init_stats()
 
-	def update(self):
-		self.spaceship.update()
-		self.stats.update()
-		self.shots.update()
-
-	def draw(self):
-		self.spaceship.draw()
-		self.stats.draw()
-		self.shots.draw()
 
 	def init_stats(self):
 		status = pygame.sprite.Group()
@@ -48,7 +39,7 @@ class Player():
 		self.spaceship.vel += v
 
 	def fire(self):
-		if(self.lock):
+		if(self.lock or self.Bullets.value <1):
 			return
 		shot = Lazer(self.spaceship.pos, self.spaceship.angle)
 		self.Bullets.value -= 1

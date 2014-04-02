@@ -9,8 +9,6 @@ class Game(object):
 		self.clock = pygame.time.Clock()
 		self.screen = World()
 
-
-
 		self.player1 = Player(1)
 		self.player2 = Player(2)
 
@@ -24,6 +22,7 @@ class Game(object):
 		self.stats.add(self.player2.stats)
 
 	def update(self):
+		self.statscheck()
 		self.players.update()
 		self.stats.update()
 		self.player1.shots.update(self.player1.shots, self.screen)
@@ -31,10 +30,8 @@ class Game(object):
 		self.collision()
 
 	def collision(self):
-		if pygame.sprite.collide_rect(self.player1.spaceship, self.player2.spaceship):
-			self.player1.Lives.value -= 2
-			self.player2.Lives.value -= 2
-			self.players.set_pos()
+		self.spaceshipcollide()
+		self.collidepad()
 
 		sprite = pygame.sprite.spritecollideany(self.player1.spaceship, self.player2.shots)
 		if sprite != None:
@@ -49,7 +46,27 @@ class Game(object):
 			self.player1.shots.remove(sprite)
 			self.player1.score.value += 1
 
+	def spaceshipcollide(self):
+		if pygame.sprite.collide_rect(self.player1.spaceship, self.player2.spaceship):
+			self.player1.Lives.value -= 2
+			self.player2.Lives.value -= 2
 
+
+	def statscheck(self):
+		if self.player1.fuel.value < 1:
+			self.player1.spaceship.lock = True
+		if self.player2.fuel.value < 1:
+			self.player2.spaceship.lock = True
+
+	def collidepad(self):
+		if pygame.sprite.spritecollideany(self.player1.spaceship, self.screen.platforms):
+			if self.player1.fuel.value < 500:
+				self.player1.fuel.value += 3
+				self.player1.Bullets.value = 10
+		if pygame.sprite.spritecollideany(self.player2.spaceship, self.screen.platforms):
+			if self.player2.fuel.value < 500:
+				self.player2.fuel.value += 3
+				self.player2.Bullets.value = 10
 
 
 	def draw(self):
@@ -74,7 +91,8 @@ class Game(object):
 		keys = pygame.key.get_pressed()
 		if keys[pygame.K_UP]:
 			self.player1.thrust()
-			self.player1.fuel.value -= 1
+			if not self.player1.spaceship.lock:
+				self.player1.fuel.value -= 1
 		if keys[pygame.K_LEFT]:
 			self.player1.turn_left()
 		elif keys[pygame.K_RIGHT]:
@@ -84,7 +102,8 @@ class Game(object):
 
 		if keys[pygame.K_w]:
 			self.player2.thrust()
-			self.player2.fuel.value -= 1
+			if not self.player2.spaceship.lock:
+				self.player2.fuel.value -= 1
 		if keys[pygame.K_a]:
 			self.player2.turn_left()
 		elif keys[pygame.K_d]:

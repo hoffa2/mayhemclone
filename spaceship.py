@@ -13,6 +13,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.pos = Vector(x, y)
         self.vel = Vector(speedx, speedy)
         self.angle = self.vel
+        self.lock = False
         self.respawnpos = Vector(x, y)
         if num == 1:
             self.image = pygame.image.load(os.path.join("res", "Ship1.png"))
@@ -25,6 +26,8 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect.centery = y
 
     def update(self):
+        if self.lock:
+            return
         self.pos += self.vel + self.blackhole()
         self.vel *= 0.9
         self.keepinside()
