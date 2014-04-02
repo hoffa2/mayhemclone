@@ -13,23 +13,26 @@ class Game(object):
 
 		self.player1 = Player(1, self.shots);
 		self.player2 = Player(2, self.shots);
-
+		self.stats = pygame.sprite.Group()
 		self.players = pygame.sprite.Group()
 		self.players.add(self.player1.spaceship)
 		self.players.add(self.player2.spaceship)
-		self.players.add(self.player1.stats)
-		self.players.add(self.player2.stats)
+		self.stats.add(self.player1.stats)
+		self.stats.add(self.player2.stats)
 
 	def update(self):
 		self.players.update()
+		self.stats.update()
 		self.shots.update(self.shots)
 		self.collision()
 
 	def collision(self):
-
+		pass
+		#collide = pygame.sprite.collide_rect()
 
 	def draw(self):
 		self.screen.draw()
+		self.stats.draw(self.screen.screen)
 		self.players.draw(self.screen.screen)
 		self.shots.draw(self.screen.screen)
 		pygame.display.flip()
@@ -48,6 +51,7 @@ class Game(object):
 		keys = pygame.key.get_pressed()
 		if keys[pygame.K_UP]:
 			self.player1.thrust()
+			self.player1.stats.fuel -= 1
 		if keys[pygame.K_LEFT]:
 			self.player1.turn_left()
 		elif keys[pygame.K_RIGHT]:
@@ -57,6 +61,7 @@ class Game(object):
 
 		if keys[pygame.K_w]:
 			self.player2.thrust()
+			self.player2.stats.fuel -= 1
 		if keys[pygame.K_a]:
 			self.player2.turn_left()
 		elif keys[pygame.K_d]:

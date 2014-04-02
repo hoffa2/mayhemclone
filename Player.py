@@ -38,6 +38,7 @@ class Player():
 		if(self.lock):
 			return
 		shot = Lazer(self.spaceship.pos, self.spaceship.angle)
+		self.stats.bulletcount -= 1
 		self.shots.add(shot)
 		self.lock = True
 		pygame.time.set_timer(USEREVENT+self.num, 200)
