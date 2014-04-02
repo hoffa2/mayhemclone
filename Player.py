@@ -70,6 +70,7 @@ class Player():
 
 	def reset(self):
 		self.reset_stats()
+		self.lockthrust = False
 		self.spaceship.reset()
 
 	def reset_stats(self):

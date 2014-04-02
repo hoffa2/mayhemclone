@@ -63,10 +63,17 @@ class Game(object):
 
 
 	def statscheck(self):
+		#fuelcheck
 		if self.player1.fuel.value < 1:
 			self.player1.lockthrust = True
 		if self.player2.fuel.value < 1:
 			self.player2.lockthrust = True
+
+		#livescheck
+		if self.player1.Lives.value < 1:
+			self.player1.reset()
+		if self.player2.Lives.value < 1:
+			self.player2.reset()
 
 	def collidepad(self):
 		if pygame.sprite.spritecollideany(self.player1.spaceship, self.screen.platforms):
