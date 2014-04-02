@@ -13,8 +13,8 @@ class Lazer(pygame.sprite.Sprite):
 		self.Cimage = self.Cimage.convert_alpha()
 		pygame.draw.ellipse(self.Cimage, (255,0, 0), [0, 0, 10, 20], 2)
 
-
-		self.image = self.Cimage #pygame.transform.rotate(self.Cimage, math.degrees(self.vel.angle()))
+		self.image = self.Cimage
+		#pygame.transform.rotate(self.Cimage, math.degrees(self.vel.angle()))
 		self.rect = self.image.get_rect()
 		self.rect.centerx = pos.x
 		self.rect.centery = pos.y

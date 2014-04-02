@@ -17,10 +17,16 @@ class Game(object):
 		self.players = pygame.sprite.Group()
 		self.players.add(self.player1.spaceship)
 		self.players.add(self.player2.spaceship)
+		self.players.add(self.player1.stats)
+		self.players.add(self.player2.stats)
 
 	def update(self):
 		self.players.update()
 		self.shots.update(self.shots)
+		self.collision()
+
+	def collision(self):
+
 
 	def draw(self):
 		self.screen.draw()

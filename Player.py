@@ -12,16 +12,24 @@ class Player():
 	def __init__(self, num, shotGroup):
 		self.num = num
 		if num == 1:
+			pos = (100, 50)
 			self.spaceship = Spaceship(Config.platform1[0] + 100, Config.platform1[1], num, -1, -1)
 		else:
+			pos = (Config.height - 100, 50)
 			self.spaceship = Spaceship(Config.platform2[0] + 100, Config.platform2[1], num, -1, -1)
 		self.shots = shotGroup
 		self.lock = False
-		self.stats = Status()
+		self.stats = Status(num, pos)
 
 	def update(self):
-		self.spaceship.pos += self.spaceship.vel
-		self.spaceship.vel *= 0.3
+		self.spaceship.update()
+		self.stats.update()
+		print "ello"
+
+	def draw(self):
+		self.spaceship.draw()
+		self.stats.draw()
+		print "ello"
 
 	def force(self, v):
 		self.spaceship.vel += v
