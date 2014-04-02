@@ -25,6 +25,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = x
         self.rect.centery = y
+        self.mask = pygame.mask.from_surface(self.image)
 
     def update(self):
         self.pos += self.vel + self.blackhole()
@@ -47,10 +48,10 @@ class Spaceship(pygame.sprite.Sprite):
 
     def blackhole(self):
         length = (self.pos - Config.middle_of_screen).magnitude()
-        if length < 300:
-            return (Config.middle_of_screen - self.pos) /length * 4
+        if length < 250:
+            return (Config.middle_of_screen - self.pos) /length *4
         else:
-            return vector.Vector(0,0)
+            return (Config.middle_of_screen - self.pos) /(length )
 
     def set_pos(self):
         self.pos = self.respawnpos

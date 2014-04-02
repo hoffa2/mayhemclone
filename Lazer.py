@@ -17,6 +17,7 @@ class Lazer(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.centerx = pos.x
 		self.rect.centery = pos.y
+		self.mask = pygame.mask.from_surface(self.image)
 
 	def update(self, shots,screen):
 		if self.outofbounds(screen):

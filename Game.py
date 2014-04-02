@@ -40,7 +40,6 @@ class Game(object):
 			self.player2.shots.remove(sprite)
 			self.player2.score.value += 1
 
-
 		sprite = pygame.sprite.spritecollideany(self.player2.spaceship, self.player1.shots)
 		if sprite != None:
 			self.player2.Lives.value -= 2
@@ -48,7 +47,7 @@ class Game(object):
 			self.player1.score.value += 1
 
 	def spaceshipcollide(self):
-		if pygame.sprite.collide_rect(self.player1.spaceship, self.player2.spaceship):
+		if pygame.sprite.collide_mask(self.player1.spaceship, self.player2.spaceship):
 			if self.player1.Lives.value > self.player2.Lives.value:
 				self.player2.reset()
 			else:
