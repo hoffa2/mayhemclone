@@ -22,6 +22,7 @@ class Game(object):
 		self.stats.add(self.player2.stats)
 
 	def update(self):
+		self.blackhole()
 		self.statscheck()
 		self.players.update()
 		self.stats.update()
@@ -48,15 +49,24 @@ class Game(object):
 
 	def spaceshipcollide(self):
 		if pygame.sprite.collide_rect(self.player1.spaceship, self.player2.spaceship):
-			self.player1.Lives.value -= 2
-			self.player2.Lives.value -= 2
+			if self.player1.Lives.value > self.player2.Lives.value:
+				self.player2.reset()
+			else:
+				self.player1.reset()
+
+	def blackhole(self):
+		if pygame.sprite.collide_rect(self.player1.spaceship, self.screen.blackhole):
+			self.player1.reset()
+		elif pygame.sprite.collide_rect(self.player2.spaceship, self.screen.blackhole):
+			self.player2.reset()
+
 
 
 	def statscheck(self):
 		if self.player1.fuel.value < 1:
-			self.player1.spaceship.lock = True
+			self.player1.lockthrust = True
 		if self.player2.fuel.value < 1:
-			self.player2.spaceship.lock = True
+			self.player2.lockthrust = True
 
 	def collidepad(self):
 		if pygame.sprite.spritecollideany(self.player1.spaceship, self.screen.platforms):
@@ -91,7 +101,7 @@ class Game(object):
 		keys = pygame.key.get_pressed()
 		if keys[pygame.K_UP]:
 			self.player1.thrust()
-			if not self.player1.spaceship.lock:
+			if not self.player1.lockthrust:
 				self.player1.fuel.value -= 1
 		if keys[pygame.K_LEFT]:
 			self.player1.turn_left()
@@ -102,7 +112,7 @@ class Game(object):
 
 		if keys[pygame.K_w]:
 			self.player2.thrust()
-			if not self.player2.spaceship.lock:
+			if not self.player2.lockthrust:
 				self.player2.fuel.value -= 1
 		if keys[pygame.K_a]:
 			self.player2.turn_left()

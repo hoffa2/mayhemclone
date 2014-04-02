@@ -19,6 +19,7 @@ class Player():
 			self.spaceship = Spaceship(Config.platform2[0] + 100, Config.platform2[1], num, -1, -1)
 		self.shots = pygame.sprite.Group()
 		self.lock = False
+		self.lockthrust = False
 		self.stats = self.init_stats()
 
 
@@ -50,6 +51,8 @@ class Player():
 
 
 	def thrust(self):
+		if self.lockthrust:
+			return
 		#print "player", self.num, "thrust"
 		self.spaceship.vel += (self.spaceship.vel + self.spaceship.angle).normalized()
 
@@ -64,3 +67,19 @@ class Player():
 		self.spaceship.vel = self.spaceship.vel.rotate(math.radians(-4))
 		self.spaceship.angle = self.spaceship.angle.rotate(math.radians(-4))
 		# = Vector(math.cos(tmp.angle()),-math.sin(tmp.angle()))
+
+	def reset(self):
+		self.reset_stats()
+		self.spaceship.reset()
+
+	def reset_stats(self):
+		list = self.stats.sprites()
+		for stats in list:
+			stats.value = stats.initialvalue
+
+
+
+
+
+
+

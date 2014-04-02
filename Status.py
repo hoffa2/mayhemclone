@@ -6,6 +6,7 @@ class Status(pygame.sprite.Sprite):
     def __init__(self, num, pos,name, value):
         pygame.sprite.Sprite.__init__(self)
         self.value = value
+        self.initialvalue = value
         self.name = name
         self.text = str(self.name) + str(self.value)
         self.center = pos
