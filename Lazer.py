@@ -23,7 +23,8 @@ class Lazer(pygame.sprite.Sprite):
 		if self.outofbounds(screen):
 			shots.remove(self)
 			return
-		self.pos += self.vel * 20 + self.blackhole(shots)
+		self.vel = self.vel + (self.blackhole(shots) / 20)
+		self.pos += self.vel * 20
 		self.image = pygame.transform.rotate(self.Cimage, math.degrees(self.vel.angle()) + 180)
 		self.rect = self.image.get_rect()
 		self.rect.centerx = self.pos.x
@@ -32,9 +33,13 @@ class Lazer(pygame.sprite.Sprite):
 	def blackhole(self, shots):
 		length = (self.pos - Config.middle_of_screen).magnitude()
 		if length < 250:
-			if length < 50:
+			if length < 40:
 				shots.remove(self)
-			return (Config.middle_of_screen - self.pos) / ((length) % 50)
+
+			#self.scale = length / 250
+			v = Config.middle_of_screen - self.pos
+			v = v.rotate(-math.pi/2) / (length)
+			return ((Config.middle_of_screen - self.pos) /length *8) + v
 		else:
 			return vector.Vector(0,0)
 	def outofbounds(self, screen):

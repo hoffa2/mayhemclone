@@ -54,12 +54,10 @@ class Game(object):
 				self.player1.reset()
 
 	def blackhole(self):
-		if pygame.sprite.collide_rect(self.player1.spaceship, self.screen.blackhole):
+		if self.player1.spaceship.pos.diff(self.screen.blackhole.pos) < 50:
 			self.player1.reset()
-		elif pygame.sprite.collide_rect(self.player2.spaceship, self.screen.blackhole):
+		if self.player2.spaceship.pos.diff(self.screen.blackhole.pos) < 50:
 			self.player2.reset()
-
-
 
 	def statscheck(self):
 		#fuelcheck
@@ -116,6 +114,10 @@ class Game(object):
 			self.player1.thrust()
 			if not self.player1.lockthrust:
 				self.player1.fuel.value -= 1
+		elif keys[pygame.K_DOWN]:
+			self.player1.revese()
+			if not self.player1.lockthrust:
+				self.player1.fuel.value -= 1
 		if keys[pygame.K_LEFT]:
 			self.player1.turn_left()
 		elif keys[pygame.K_RIGHT]:
@@ -125,6 +127,10 @@ class Game(object):
 
 		if keys[pygame.K_w]:
 			self.player2.thrust()
+			if not self.player2.lockthrust:
+				self.player2.fuel.value -= 1
+		elif keys[pygame.K_s]:
+			self.player2.revese()
 			if not self.player2.lockthrust:
 				self.player2.fuel.value -= 1
 		if keys[pygame.K_a]:

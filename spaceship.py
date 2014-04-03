@@ -30,6 +30,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.scale = 1
 
     def update(self):
+        #self.vel += self.blackhole()
         self.pos += self.vel + self.blackhole()
         self.vel *= 0.9
         self.keepinside()
@@ -54,7 +55,9 @@ class Spaceship(pygame.sprite.Sprite):
         length = (self.pos - Config.middle_of_screen).magnitude()
         if length < 250:
             self.scale = length / 250
-            return (Config.middle_of_screen - self.pos) /length *4
+            v = Config.middle_of_screen - self.pos
+            v = v.rotate(-math.pi/2) / (length / 20 + 10)
+            return ((Config.middle_of_screen - self.pos) /length *2) + v
         else:
             self.scale = 1
             return (Config.middle_of_screen - self.pos) /(length )
@@ -68,7 +71,6 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = self.pos.x
         self.rect.centery = self.pos.y
-
 
 
 
