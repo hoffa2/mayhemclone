@@ -11,4 +11,4 @@ class Config(object):
         score = 0
         defaultlives = 100
         defaultfuel  = 500
-        bulletcount = 10
+        bulletcount = 100

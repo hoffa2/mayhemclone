@@ -79,14 +79,14 @@ class Game(object):
 			self.player1.spaceship.on_pad = True
 			if self.player1.fuel.value < 500:
 				self.player1.fuel.value += 3
-				self.player1.Bullets.value = 10
+				self.player1.Bullets.value = 100
 		else:
 			self.player1.spaceship.on_pad = False
 		if pygame.sprite.spritecollideany(self.player2.spaceship, self.screen.platforms):
 			self.player2.spaceship.on_pad = True
 			if self.player2.fuel.value < 500:
 				self.player2.fuel.value += 3
-				self.player2.Bullets.value = 10
+				self.player2.Bullets.value = 100
 		else:
 			self.player2.spaceship.on_pad = False
 
