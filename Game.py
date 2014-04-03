@@ -33,18 +33,22 @@ class Game(object):
 	def collision(self):
 		self.spaceshipcollide()
 		self.collidepad()
+		self.shotcolliion()
 
-		sprite = pygame.sprite.spritecollideany(self.player1.spaceship, self.player2.shots)
-		if sprite != None:
-			self.player1.Lives.value -= 2
-			self.player2.shots.remove(sprite)
-			self.player2.score.value += 1
+	def shotcolliion(self):
+		sprites = self.player2.shots
+		for sprite in sprites:
+			if pygame.sprite.collide_mask(self.player1.spaceship, sprite):
+				self.player1.Lives.value -= 2
+				self.player2.shots.remove(sprite)
+				self.player2.score.value += 1
 
-		sprite = pygame.sprite.spritecollideany(self.player2.spaceship, self.player1.shots)
-		if sprite != None:
-			self.player2.Lives.value -= 2
-			self.player1.shots.remove(sprite)
-			self.player1.score.value += 1
+		sprites = self.player1.shots
+		for sprite in sprites:
+			if pygame.sprite.collide_mask(self.player2.spaceship, sprite):
+				self.player2.Lives.value -= 2
+				self.player1.shots.remove(sprite)
+				self.player1.score.value += 1
 
 	def spaceshipcollide(self):
 		if pygame.sprite.collide_mask(self.player1.spaceship, self.player2.spaceship):
