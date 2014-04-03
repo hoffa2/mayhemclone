@@ -115,7 +115,7 @@ class Game(object):
 			if not self.player1.lockthrust:
 				self.player1.fuel.value -= 1
 		elif keys[pygame.K_DOWN]:
-			self.player1.revese()
+			self.player1.reverse()
 			if not self.player1.lockthrust:
 				self.player1.fuel.value -= 1
 		if keys[pygame.K_LEFT]:
@@ -130,7 +130,7 @@ class Game(object):
 			if not self.player2.lockthrust:
 				self.player2.fuel.value -= 1
 		elif keys[pygame.K_s]:
-			self.player2.revese()
+			self.player2.reverse()
 			if not self.player2.lockthrust:
 				self.player2.fuel.value -= 1
 		if keys[pygame.K_a]:

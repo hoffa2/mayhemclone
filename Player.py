@@ -56,6 +56,12 @@ class Player():
 		#print "player", self.num, "thrust"
 		self.spaceship.vel += (self.spaceship.vel + self.spaceship.angle).normalized()
 
+	def reverse(self):
+		if self.lockthrust:
+			return
+		#print "player", self.num, "thrust"
+		self.spaceship.vel -= (self.spaceship.vel + self.spaceship.angle).normalized()
+
 	def turn_right(self):
 		#print "player", self.num, "right"
 		self.spaceship.vel = self.spaceship.vel.rotate(math.radians(4))
