@@ -3,7 +3,7 @@ from Player import Player
 from Game import Game
 from Lazer import Lazer
 import pygame
-d
+
 
 
 def main():

@@ -11,12 +11,12 @@ from Status import Status
 class Player():
 	def __init__(self, num):
 		self.num = num
-		if num == 1:
+		if num == 2:
 			self.textpos = (100, 50)
-			self.spaceship = Spaceship(Config.platform1[0] + 100, Config.platform1[1], num, -1, -1)
+			self.spaceship = Spaceship(Config.platform2[0] + 100, Config.platform2[1] + 20, num, -1, -1)
 		else:
 			self.textpos = (Config.height - 100, 50)
-			self.spaceship = Spaceship(Config.platform2[0] + 100, Config.platform2[1], num, -1, -1)
+			self.spaceship = Spaceship(Config.platform1[0] + 100, Config.platform1[1] + 20, num, -1, -1)
 		self.shots = pygame.sprite.Group()
 		self.lock = False
 		self.lockthrust = False

@@ -4,6 +4,7 @@ import math
 from config import Config
 import vector
 from World import World
+
 class Lazer(pygame.sprite.Sprite):
 	def __init__(self, pos, vel):
 		pygame.sprite.Sprite.__init__(self)
@@ -18,6 +19,7 @@ class Lazer(pygame.sprite.Sprite):
 		self.rect.centerx = pos.x
 		self.rect.centery = pos.y
 		self.mask = pygame.mask.from_surface(self.image)
+		print self.mask
 
 	def update(self, shots,screen):
 		if self.outofbounds(screen):
