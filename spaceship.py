@@ -27,12 +27,13 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect.centerx = x
         self.rect.centery = y
         self.mask = pygame.mask.from_surface(self.image)
+        self.scale = 1
 
     def update(self):
         self.pos += self.vel + self.blackhole()
         self.vel *= 0.9
         self.keepinside()
-        self.image = pygame.transform.rotate(self.Cimage, math.degrees(self.angle.angle()) + 180)
+        self.image = pygame.transform.rotozoom(self.Cimage, math.degrees(self.angle.angle()) + 180, self.scale)
         self.rect = self.image.get_rect()
         self.rect.centerx = self.pos.x
         self.rect.centery = self.pos.y
@@ -52,8 +53,10 @@ class Spaceship(pygame.sprite.Sprite):
             return Vector(0,0)
         length = (self.pos - Config.middle_of_screen).magnitude()
         if length < 250:
+            self.scale = length / 250
             return (Config.middle_of_screen - self.pos) /length *4
         else:
+            self.scale = 1
             return (Config.middle_of_screen - self.pos) /(length )
 
     def set_pos(self):

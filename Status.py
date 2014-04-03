@@ -19,5 +19,3 @@ class Status(pygame.sprite.Sprite):
         self.image = self.font.render(self.text, 1, pygame.Color("yellow"))
         self.rect = self.image.get_rect()
         self.rect.center = self.center
-
-

@@ -69,6 +69,7 @@ class Player():
 		# = Vector(math.cos(tmp.angle()),-math.sin(tmp.angle()))
 
 	def reset(self):
+		self.spaceship.scale = 1
 		self.reset_stats()
 		self.lockthrust = False
 		self.spaceship.reset()
