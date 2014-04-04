@@ -25,10 +25,10 @@ class Player():
 
 	def init_stats(self):
 		status = pygame.sprite.Group()
-		self.fuel = Status(self.num, (self.textpos[0],self.textpos[1] + 20), "Fuel", Config.defaultfuel)
-		self.Bullets = Status(self.num, (self.textpos[0], self.textpos[1] + 40), "Bullets",Config.bulletcount )
-		self.Lives = Status(self.num, (self.textpos[0],self.textpos[1] + 60),  "Lives", Config.defaultlives)
-		self.score = Status(self.num, (self.textpos[0],self.textpos[1]), "Score", Config.score)
+		self.fuel = Text(self.num, (self.textpos[0],self.textpos[1] + 20), "Fuel", Config.defaultfuel)
+		self.Bullets = Text(self.num, (self.textpos[0], self.textpos[1] + 40), "Bullets",Config.bulletcount )
+		self.Lives = Text(self.num, (self.textpos[0],self.textpos[1] + 60),  "Lives", Config.defaultlives)
+		self.score = Text(self.num, (self.textpos[0],self.textpos[1]), "Score", Config.score)
 		status.add(self.fuel)
 		status.add(self.score)
 		status.add(self.Lives)

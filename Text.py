@@ -2,7 +2,7 @@ import pygame
 from config import Config
 from World import World
 
-class Status(pygame.sprite.Sprite):
+class Text(pygame.sprite.Sprite):
     def __init__(self, num, pos,name, value):
         pygame.sprite.Sprite.__init__(self)
         self.value = value

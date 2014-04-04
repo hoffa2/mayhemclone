@@ -21,7 +21,7 @@ class Spaceship(pygame.sprite.Sprite):
             self.image = pygame.image.load(os.path.join("res", "Ship1.png"))
         elif num ==2:
             self.image = pygame.image.load(os.path.join("res", "Ship2.png"))
-        self.Cimage = pygame.transform.scale(self.image, [80, 80])
+        self.Cimage = pygame.transform.scale(self.image, [60, 60])
         self.image = self.Cimage
         self.rect = self.image.get_rect()
         self.rect.centerx = x
