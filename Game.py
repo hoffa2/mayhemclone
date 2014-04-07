@@ -22,6 +22,7 @@ class Game(object):
 		self.stats.add(self.player2.stats)
 
 	def update(self):
+		""" Updating all paraters for objects on screen """
 		self.blackhole()
 		self.statscheck()
 		self.players.update()
@@ -31,11 +32,13 @@ class Game(object):
 		self.collision()
 
 	def collision(self):
+		""" Checking for collisions between objects on screen """
 		self.spaceshipcollide()
 		self.collidepad()
 		self.shotcolliion()
 
 	def shotcolliion(self):
+		""" Checking if spaceship is hit by bullet """
 		sprites = self.player2.shots
 		for sprite in sprites:
 			if pygame.sprite.collide_mask(self.player1.spaceship, sprite):
@@ -51,6 +54,7 @@ class Game(object):
 				self.player1.score.value += 1
 
 	def spaceshipcollide(self):
+		""" Checking collision between spaceships """
 		if pygame.sprite.collide_mask(self.player1.spaceship, self.player2.spaceship):
 			if self.player1.Lives.value > self.player2.Lives.value:
 				self.player2.reset()
@@ -58,6 +62,7 @@ class Game(object):
 				self.player1.reset()
 
 	def blackhole(self):
+		""" Resets players position and stats if caught in black hole """
 		if self.player1.spaceship.pos.diff(self.screen.blackhole.pos) < 50:
 			self.player1.reset()
 		if self.player2.spaceship.pos.diff(self.screen.blackhole.pos) < 50:
@@ -77,6 +82,7 @@ class Game(object):
 			self.player2.reset()
 
 	def collidepad(self):
+		""" Checking if spaceship is on its pad """
 		if pygame.sprite.collide_mask(self.player1.spaceship, self.screen.platform1):
 			self.player1.spaceship.on_pad = True
 			if self.player1.fuel.value < 500:
@@ -95,6 +101,7 @@ class Game(object):
 
 
 	def draw(self):
+		""" Drawing all visible objects on screen """
 		self.screen.draw()
 		self.stats.draw(self.screen.screen)
 		self.players.draw(self.screen.screen)

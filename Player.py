@@ -6,10 +6,11 @@ from pygame import *
 import math
 from config import Config
 from World import World
-from Status import Status
+from Text import Text
 
 class Player():
 	def __init__(self, num):
+		"""initializes a player instance"""
 		self.num = num
 		if num == 2:
 			self.textpos = (100, 50)
@@ -24,6 +25,7 @@ class Player():
 
 
 	def init_stats(self):
+		"""Adding text"""
 		status = pygame.sprite.Group()
 		self.fuel = Text(self.num, (self.textpos[0],self.textpos[1] + 20), "Fuel", Config.defaultfuel)
 		self.Bullets = Text(self.num, (self.textpos[0], self.textpos[1] + 40), "Bullets",Config.bulletcount )
@@ -40,6 +42,7 @@ class Player():
 		self.spaceship.vel += v
 
 	def fire(self):
+		""" Shooting bullets """
 		if(self.lock or self.Bullets.value <1):
 			return
 		shot = Lazer(self.spaceship.pos, self.spaceship.angle)
@@ -51,36 +54,42 @@ class Player():
 
 
 	def thrust(self):
+		""" Thrusting forward """
 		if self.lockthrust:
 			return
 		#print "player", self.num, "thrust"
 		self.spaceship.vel += (self.spaceship.vel + self.spaceship.angle).normalized()
 
 	def reverse(self):
+		""" Thrusting backwards """
 		if self.lockthrust:
 			return
 		#print "player", self.num, "thrust"
 		self.spaceship.vel -= (self.spaceship.vel + self.spaceship.angle).normalized()
 
 	def turn_right(self):
+		""" Moving ship to the right """
 		#print "player", self.num, "right"
 		self.spaceship.vel = self.spaceship.vel.rotate(math.radians(4))
 		self.spaceship.angle = self.spaceship.angle.rotate(math.radians(4))
 		#self.spaceship.vel = Vector(math.cos(tmp.angle()),-math.sin(tmp.angle()))
 
 	def turn_left(self):
+		""" Moving ship to the left """
 		#print "player", self.num, "left"
 		self.spaceship.vel = self.spaceship.vel.rotate(math.radians(-4))
 		self.spaceship.angle = self.spaceship.angle.rotate(math.radians(-4))
 		# = Vector(math.cos(tmp.angle()),-math.sin(tmp.angle()))
 
 	def reset(self):
+		""" Reseting all parameters to inital value """
 		self.spaceship.scale = 1
 		self.reset_stats()
 		self.lockthrust = False
 		self.spaceship.reset()
 
 	def reset_stats(self):
+		""" Resetting player status """
 		list = self.stats.sprites()
 		for stats in list:
 			stats.value = stats.initialvalue

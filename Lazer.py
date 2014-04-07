@@ -19,9 +19,9 @@ class Lazer(pygame.sprite.Sprite):
 		self.rect.centerx = pos.x
 		self.rect.centery = pos.y
 		self.mask = pygame.mask.from_surface(self.image)
-		print self.mask
 
 	def update(self, shots,screen):
+		""" Updates position """
 		if self.outofbounds(screen):
 			shots.remove(self)
 			return
@@ -33,6 +33,7 @@ class Lazer(pygame.sprite.Sprite):
 		self.rect.centery = self.pos.y
 
 	def blackhole(self, shots):
+		""" Attracting hot against black hole """
 		length = (self.pos - Config.middle_of_screen).magnitude()
 		if length < 250:
 			if length < 40:
