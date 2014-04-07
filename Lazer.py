@@ -7,6 +7,9 @@ from World import World
 
 class Lazer(pygame.sprite.Sprite):
 	def __init__(self, pos, vel):
+                """ Inits the lazer object.
+                pos is a vector giving the starting position
+                vel is a vector giving the initial velosity"""
 		pygame.sprite.Sprite.__init__(self)
 		self.pos = pos
 		self.vel = vel.normalized()
@@ -22,6 +25,7 @@ class Lazer(pygame.sprite.Sprite):
 		print self.mask
 
 	def update(self, shots,screen):
+                WWW
 		if self.outofbounds(screen):
 			shots.remove(self)
 			return
