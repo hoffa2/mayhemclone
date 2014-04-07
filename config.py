@@ -1,7 +1,11 @@
+""" A class to contain the configuration of the game.
+.. Authors: Helge Hoff & Øystein Tveito
+"""
 import pygame
 import vector
 
 class Config(object):
+        """This class holds the config for the game mayhem"""
         Screen_Size = (1300, 700)
         height = Screen_Size[0]
         width = Screen_Size[1]
