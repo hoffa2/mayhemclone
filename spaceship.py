@@ -30,6 +30,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.scale = 1
 
     def update(self):
+        """ Updates spaceship position"""
         #self.vel += self.blackhole()
         self.pos += self.vel + self.blackhole()
         self.vel *= 0.9
@@ -40,6 +41,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect.centery = self.pos.y
 
     def keepinside(self):
+        """ Keeping ship from wandering outside of the screen bounds"""
         if self.pos.x > Config.Screen_Size[0]:
             self.vel.x = -1
         elif self.pos.x < 0:
@@ -50,6 +52,7 @@ class Spaceship(pygame.sprite.Sprite):
             self.vel.y = 1
 
     def blackhole(self):
+        """ Attraction towards the black hole"""
         if self.on_pad:
             return Vector(0,0)
         length = (self.pos - Config.middle_of_screen).magnitude()
@@ -66,6 +69,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.pos = self.respawnpos
 
     def reset(self):
+        """ Resets the spaceship to inital position """
         self.pos = self.respawnpos
         self.vel = Vector(0,0)
         self.rect = self.image.get_rect()

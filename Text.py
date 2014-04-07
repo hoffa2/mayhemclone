@@ -15,6 +15,7 @@ class Text(pygame.sprite.Sprite):
         self.update()
 
     def update(self):
+        """ Rendering text """
         self.text = str(self.name) + " "+ str(self.value)
         self.image = self.font.render(self.text, 1, pygame.Color("yellow"))
         self.rect = self.image.get_rect()
