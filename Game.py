@@ -1,10 +1,15 @@
+""" A class to contain the game.
+.. Authors: Helge Hoff & Oystein Tveito
+"""
 from config import Config
 import pygame
 from World import World
 from Player import Player
 
 class Game(object):
+	""" This is the main class for the game Mayhem """
 	def __init__(self):
+		""" Initialize the game """
 		self.cfg = Config()
 		self.clock = pygame.time.Clock()
 		self.screen = World()
@@ -15,18 +20,24 @@ class Game(object):
 		self.stats = pygame.sprite.Group()
 		self.players = pygame.sprite.Group()
 
+		self.all = pygame.sprite.Group()
+
 		self.players.add(self.player1.spaceship)
 		self.players.add(self.player2.spaceship)
 
 		self.stats.add(self.player1.stats)
 		self.stats.add(self.player2.stats)
 
+		self.all.add(self.player1.spaceship)
+		self.all.add(self.player2.spaceship)
+		self.all.add(self.player1.stats)
+		self.all.add(self.player2.stats)
+
 	def update(self):
-		""" Updating all paraters for objects on screen """
+		""" Updating all parameters for objects on screen """
 		self.blackhole()
 		self.statscheck()
-		self.players.update()
-		self.stats.update()
+		self.all.update()
 		self.player1.shots.update(self.player1.shots, self.screen)
 		self.player2.shots.update(self.player2.shots, self.screen)
 		self.collision()
@@ -56,10 +67,8 @@ class Game(object):
 	def spaceshipcollide(self):
 		""" Checking collision between spaceships """
 		if pygame.sprite.collide_mask(self.player1.spaceship, self.player2.spaceship):
-			if self.player1.Lives.value > self.player2.Lives.value:
-				self.player2.reset()
-			else:
-				self.player1.reset()
+			self.player1.Lives.value -= 10
+			self.player2.Lives.value -= 10
 
 	def blackhole(self):
 		""" Resets players position and stats if caught in black hole """
@@ -69,6 +78,7 @@ class Game(object):
 			self.player2.reset()
 
 	def statscheck(self):
+		""" Checks the status of fuel level and lives """
 		#fuelcheck
 		if self.player1.fuel.value < 1:
 			self.player1.lockthrust = True
@@ -151,10 +161,6 @@ class Game(object):
 		if keys[pygame.K_SPACE]:
 			self.player2.fire()
 
-
-
-	def on_exit(self):
-		pass
 
 	def run(self):
 		""" Main run loop """

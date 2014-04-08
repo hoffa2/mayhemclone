@@ -1,5 +1,5 @@
 """ A class to contain the configuration of the game.
-.. Authors: Helge Hoff & Øystein Tveito
+.. Authors: Helge Hoff & Oystein Tveito
 """
 import pygame
 import vector

@@ -1,3 +1,7 @@
+""" A class to contain the game.
+.. Authors: Helge Hoff & Oystein Tveito
+"""
+
 from pygame import *
 import pygame
 import math
@@ -7,9 +11,7 @@ from World import World
 
 class Lazer(pygame.sprite.Sprite):
 	def __init__(self, pos, vel):
-                """ Inits the lazer object.
-                pos is a vector giving the starting position
-                vel is a vector giving the initial velosity"""
+        """ Inits the lazer object. """
 		pygame.sprite.Sprite.__init__(self)
 		self.pos = pos
 		self.vel = vel.normalized()
@@ -36,7 +38,7 @@ class Lazer(pygame.sprite.Sprite):
 		self.rect.centery = self.pos.y
 
 	def blackhole(self, shots):
-		""" Attracting hot against black hole """
+		""" Attracting shot against black hole """
 		length = (self.pos - Config.middle_of_screen).magnitude()
 		if length < 250:
 			if length < 40:
@@ -48,7 +50,9 @@ class Lazer(pygame.sprite.Sprite):
 			return ((Config.middle_of_screen - self.pos) /length *8) + v
 		else:
 			return vector.Vector(0,0)
+
 	def outofbounds(self, screen):
+		""" Checks if the shot is inside of the screen """
 		if screen.backgroundrect.contains(self.rect):
 			return False
 		else:
