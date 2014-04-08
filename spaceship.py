@@ -1,3 +1,6 @@
+""" A class to contain the configuration of the game.
+.. Authors: Helge Hoff & Oystein Tveito
+"""
 import pygame
 import os
 import math

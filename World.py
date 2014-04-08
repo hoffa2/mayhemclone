@@ -1,3 +1,6 @@
+""" A class to contain the configuration of the game.
+.. Authors: Helge Hoff & Oystein Tveito
+"""
 import pygame
 from pygame.locals import *
 from config import Config
@@ -9,6 +12,7 @@ import os
 
 class World:
     def __init__(self):
+        """ Initializing pygame, background and attributes in the game inviroment"""
         pygame.init()
         pygame.display.set_mode((Config.Screen_Size[0], Config.Screen_Size[1]))
         self.platform1 = Platform(Config.platform1[0] , Config.platform1[1], self.loadimage(os.path.join("res", "platform.png")))

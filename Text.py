@@ -1,9 +1,14 @@
+""" A class to contain the configuration of the game.
+.. Authors: Helge Hoff & Oysteinystein Tveito
+"""
 import pygame
 from config import Config
 from World import World
 
 class Text(pygame.sprite.Sprite):
     def __init__(self, num, pos,name, value):
+        """ Initialising text position, which player it is, the value that it
+        should contain, and the actual text"""
         pygame.sprite.Sprite.__init__(self)
         self.value = value
         self.initialvalue = value
