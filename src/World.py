@@ -11,6 +11,7 @@ import os
 
 
 class World:
+    """ Holds the surface to be drawn on and all obects that is contained in the world that is not spawned or controlled by the player """
     def __init__(self):
         """ Initializing pygame, background and attributes in the game inviroment"""
         pygame.init()
@@ -28,6 +29,7 @@ class World:
         return pygame.image.load(filename)
 
     def get_rect(self):
+        """ Returns the rect of the background """
         return self.backgroundrect
 
     def add_platforms(self):

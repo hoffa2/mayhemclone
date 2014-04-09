@@ -7,6 +7,7 @@ from config import *
 import vector
 
 class Platform(pygame.sprite.Sprite):
+	""" Holds the platforms """
     def __init__(self, x, y, image):
         """initializig platform object"""
         pygame.sprite.Sprite.__init__(self)

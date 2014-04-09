@@ -97,16 +97,23 @@
 %%% Set counter to 1
 %\setcounter{page}{1}
 \section{Introduction}
+\paragraph{}
 For this project a clone of the arcade game Mayhem will be implemented. There is two authors on this project, so the workload will be shared between.
 \subsection{Technical Background}
 \subsubsection{Mayhem} 
 \paragraph{}
-
+A clasic arcade game with two (or more) spaceships fight each other. 
 \section{Design}
 \paragraph{}
-This game is a two player game sharing one screen and keyboard. Each player have a set of keys associated with him, making him able to navigate and shoot his spaceship. 
+This game is a two player game sharing one screen and keyboard. Each player have a set of keys associated with him, making him able to navigate and shoot his spaceship. Each spaceship starts at a spawnpoint wich is a platform not affected by gravity. On the platform, the player can refule and restock bullets. The platform a player spawn on is private, and can not be used by other players. 
+\paragraph{}
+In the middle of the screen there is a black hole. The black hole has gravity, pulling every player towards it. It also pulls lazer bullets, because, as we know, not eaven light can escape the awsome power of a black hole. 
+\paragraph{}
+
 
 \section{Implementation}
+\paragraph{}
+The game is written in python, with pygame as it's most significant building block. All classes are split into seperate files for a better overview of the game. All visible objects are children of the pygame class Sprite.
 \subsubsection{World}
 \paragraph{World}
 

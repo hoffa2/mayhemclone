@@ -6,6 +6,7 @@ from config import Config
 from World import World
 
 class Text(pygame.sprite.Sprite):
+    """ A helper class to manage text enteties on the screen """
     def __init__(self, num, pos,name, value):
         """ Initialising text position, which player it is, the value that it
         should contain, and the actual text"""

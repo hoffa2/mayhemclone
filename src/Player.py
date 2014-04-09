@@ -13,6 +13,7 @@ from World import World
 from Text import Text
 
 class Player():
+	""" Contains the player and manages the actions of the player """
 	def __init__(self, num):
 		"""initializes a player instance"""
 		self.num = num
@@ -43,6 +44,7 @@ class Player():
 
 
 	def force(self, v):
+		""" Inflicts a force on a spaceship """
 		self.spaceship.vel += v
 
 	def fire(self):

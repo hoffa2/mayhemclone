@@ -8,6 +8,7 @@ import vector
 pygame.init()
 
 class Obstacle(pygame.sprite.Sprite):
+	""" Holds the obstacles in the game """
 
     defaultradius = 100
 

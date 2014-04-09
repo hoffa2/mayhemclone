@@ -1,10 +1,17 @@
+""" A class to contain the configuration of the game.
+.. Authors: Helge Hoff & Oysteinystein Tveito
+"""
+
 import math
 class Vector(object):
+	""" A rewrite of the Vector2D class adding some functionallity """
 	def __init__(self, x, y):
+		""" Initialize the vector with the given x and y coordinate """
 		self.x = x
 		self.y = y
 
 	def __repr__(self):
+		""" Retuns a human readable representation of the vector """
 		return "Vector(%s, %s)" % (self.x, self.y)
 
 	def __add__(self, b):

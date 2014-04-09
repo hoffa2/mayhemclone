@@ -11,7 +11,9 @@ from config import Config
 import vector
 
 class Spaceship(pygame.sprite.Sprite):
+    """ loads and controlls the spaceship sprite. Functionallity to manage its behaviure is also included in this class """
     def __init__(self, x, y, num, speedx = 0, speedy = 0):
+        """ initializes the spaceship """ 
         pygame.sprite.Sprite.__init__(self)
         self.pos = Vector(x, y)
         self.vel = Vector(speedx, speedy)
@@ -69,6 +71,7 @@ class Spaceship(pygame.sprite.Sprite):
             return (Config.middle_of_screen - self.pos) /(length )
 
     def set_pos(self):
+        """ Resetting the position of the spaceship """
         self.pos = self.respawnpos
 
     def reset(self):
