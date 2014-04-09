@@ -9,12 +9,19 @@
 \contentsline {paragraph}{}{2}
 \contentsline {section}{\numberline {3}Implementation}{2}
 \contentsline {paragraph}{}{2}
-\contentsline {subsubsection}{\numberline {3.0.2}World}{2}
-\contentsline {paragraph}{World}{2}
-\contentsline {section}{\numberline {4}Discussion}{2}
-\contentsline {paragraph}{}{2}
-\contentsline {section}{\numberline {5}Conclusion}{4}
+\contentsline {subsection}{\numberline {3.1}World}{4}
+\contentsline {subsection}{\numberline {3.2}Text}{4}
+\contentsline {subsection}{\numberline {3.3}Collision}{4}
+\contentsline {subsubsection}{\numberline {3.3.1}Spaceships}{4}
+\contentsline {subsubsection}{\numberline {3.3.2}Bullets}{4}
+\contentsline {subsubsection}{\numberline {3.3.3}On pad detection}{4}
+\contentsline {subsection}{\numberline {3.4}Player}{4}
+\contentsline {subsection}{\numberline {3.5}Game}{4}
+\contentsline {subsection}{\numberline {3.6}Spaceship}{4}
+\contentsline {section}{\numberline {4}Discussion}{4}
 \contentsline {paragraph}{}{4}
-\contentsline {section}{\numberline {6}Part II - \IeC {\O }ystein Tveito}{4}
-\contentsline {section}{\numberline {7}Part II - Helge Hoff}{5}
-\contentsline {section}{References}{6}
+\contentsline {section}{\numberline {5}Conclusion}{6}
+\contentsline {paragraph}{}{6}
+\contentsline {section}{\numberline {6}Part II - \IeC {\O }ystein Tveito}{6}
+\contentsline {section}{\numberline {7}Part II - Helge Hoff}{7}
+\contentsline {section}{References}{8}

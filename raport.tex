@@ -113,8 +113,30 @@ In the middle of the screen there is a black hole. The black hole has gravity, p
 \section{Implementation}
 \paragraph{}
 The game is written in python, with pygame as it's most significant building block. All classes are split into separate files for a better overview of the game. All visible objects are children of the pygame class Sprite.
-\subsubsection{World}
-\paragraph{World}
+
+\begin{figure}[hbtp]
+\caption{Class diagram}
+\centering
+\includegraphics[scale=0.3]{classdiagram.png}
+\end{figure}
+\newpage
+
+\subsection{World}
+The World class contains the screen on which all of the games objects are to be drawn. It also contains the backround image represented as a pygame surface type, the black hole, and the two platforms where the spaceships are spawned. The platforms is of type pygame sprite object aswell as the black hole represented in the middle of the screen where the spachips disappear into when drawing to close.
+\subsection{Text}
+The text is as the requirements specified of type pygame sprite, and each status parameter of the spaceships is one objects which is put in a pygame sprite group. the text object has an update method which renders the text for later to be drawn. The different status attribute of the spaceships can be altered by changing the different objects values, value is an attribute of the text class.
+\subsection{Collision}
+\subsubsection{Spaceships}
+Collision between the two spaceships is handled by using the pygame sprite mask collision method which has two sprites as input. Then the two spaceship sprites are sent in as arguments to the mask collide function. Then if collision they each looses lives.
+\subsubsection{Bullets}
+The bullets for the specific spaceship is in its own group which fasilitates the collision detection. Here the mask collide method is also used, and to check every bullet from one spaceship towards the other spaceship is done by getting a list of sprites that the sprite group contains. Then iterating through it and checking every bullet up against the spaceship. To get a a list of the sprites in a group is simply done by setting a list equal to the spesific group.
+\subsubsection{On pad detection}
+\subsection{Player}
+\subsection{Game}
+\subsection{Spaceship}
+
+ 
+
 
 
 \section{Discussion}
