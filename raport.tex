@@ -102,18 +102,17 @@ For this project a clone of the arcade game Mayhem will be implemented. There is
 \subsection{Technical Background}
 \subsubsection{Mayhem} 
 \paragraph{}
-A clasic arcade game with two (or more) spaceships fight each other. 
+A classic arcade game with two (or more) spaceships fight each other. 
 \section{Design}
 \paragraph{}
-This game is a two player game sharing one screen and keyboard. Each player have a set of keys associated with him, making him able to navigate and shoot his spaceship. Each spaceship starts at a spawnpoint wich is a platform not affected by gravity. On the platform, the player can refule and restock bullets. The platform a player spawn on is private, and can not be used by other players. 
+This game is a two player game sharing one screen and keyboard. Each player have a set of keys associated with him, making him able to navigate and shoot his spaceship. Each spaceship starts at a spawn point which is a platform not affected by gravity. On the platform, the player can refuel and restock bullets. The platform a player spawn on is private, and can not be used by other players. 
 \paragraph{}
-In the middle of the screen there is a black hole. The black hole has gravity, pulling every player towards it. It also pulls lazer bullets, because, as we know, not eaven light can escape the awsome power of a black hole. 
+In the middle of the screen there is a black hole. The black hole has gravity, pulling every player towards it. It also pulls laser bullets, because, as we know, not even light can escape the awesome power of a black hole. This is done instead of having gravity pointing downwards. The scene is set in space, so there is no up and down. When getting close to the black hole, an object will start to spin clockwise towards around the hole, while pulling it towards the center. 
 \paragraph{}
-
 
 \section{Implementation}
 \paragraph{}
-The game is written in python, with pygame as it's most significant building block. All classes are split into seperate files for a better overview of the game. All visible objects are children of the pygame class Sprite.
+The game is written in python, with pygame as it's most significant building block. All classes are split into separate files for a better overview of the game. All visible objects are children of the pygame class Sprite.
 \subsubsection{World}
 \paragraph{World}
 
@@ -180,6 +179,64 @@ This section starts with a list of requirements and an explanation on whether or
 \section{Conclusion}
 \paragraph{}
 
+\section{Part II - Øystein Tveito}
+\begin{itemize}
+\item[Q] 
+What is the difference between a class and an object?
+\item[A]
+A class is a template for an object, which has the blueprint for what data types and functionality an object will contain when created. No memory is allocated creating a class. An object on the other hand is an instance of a class, and an object holds the data specified by the class it is an object of.
+\paragraph{}
+\item[Q] 
+What is inheritance? What is the Python syntax for inheritance?
+\item[A]
+Inheritance is the process of building on an already defined class, and changing or adding data or behaviour, while keeping the functionality of the parent class. All public data and functions defined in the class the new class is inheriting from are preserved by default. If a function or data field with the same name is added to the new class, that will take presidents over the original, and will be used instead. In python a new class can inherit from an old class with this syntax in the declaration: class NewClass(OldClass):
+\paragraph{}
+\item[Q]
+What is the difference between a has-a and an is-a relationship?
+\item[A]
+An is-a relationship describes an object as an instance of that category. For instance a Macbook pro is a PC (personal computer). (YES it is).
+A has-a relationship describes something an object contain. For instance a Macbook pro has a CPU.
+\paragraph{}
+\item[Q] 
+What is encapsulation? How is encapsulation handled in Python?
+\item[A]
+First question: Encapsulation in this context can describe two things in OOP. It can describe the languages mechanism of restricting access to certain data fields or functions meant to be used internally by a class, or only be accessed by friendly classes which are defined. The second interpretation of the word is the bundling of data with the functionality created to manipulate or otherwise handle the data.
+Second question: For the first interpretation of the word it can be explained in one word: poorly. In more then one word: Python tries with the ability to name a variable or function with the prefix "\_\_", which will obscure the name of the data field or function by adding "\_className" as a prefix to it. This however is a terrible way of doing so, and with the ease of getting the real name, this is easy to abuse, and thereby less secure.
+ For the second interpretation it handles it about the same way as any other OOP languages, like java, c++ among others.
+\paragraph{}
+\item[Q]
+What is polymorphism? Give examples of polymorphism from the precode and the Mayhem implementation
+\item[A]
+Polymorphism is the notion of inheriting one ore more new classes from one common parent (or a earlier ancestor) and then handle them as the common parent. For instance, a class named car can be the common ancestor for a Ferrari F60 and a Ford Fiesta. A boolean function openRightFrontWindow(car) can be written, designed to take in a car. Now both the F60 and the Fiesta can utilize this function (grated that the F60 is bought with electric windows which is extra on an F60 and not on an Fiesta).
+\end{itemize}
+
+\section{Part II - Helge Hoff}
+\begin{itemize}
+\item[Q] 
+What is the difference between a class and an object?
+\item[A]
+
+\paragraph{}
+\item[Q] 
+What is inheritance? What is the Python syntax for inheritance?
+\item[A]
+
+\paragraph{}
+\item[Q]
+What is the difference between a has-a and an is-a relationship?
+\item[A]
+
+\paragraph{}
+\item[Q] 
+What is encapsulation? How is encapsulation handled in Python?
+\item[A]
+
+\paragraph{}
+\item[Q]
+What is polymorphism? Give examples of polymorphism from the precode and the Mayhem implementation
+\item[A]
+
+\end{itemize}
 
 
 \begin{thebibliography}{9}
