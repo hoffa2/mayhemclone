@@ -16,4 +16,5 @@
 \contentsline {section}{\numberline {5}Conclusion}{4}
 \contentsline {paragraph}{}{4}
 \contentsline {section}{\numberline {6}Part II - \IeC {\O }ystein Tveito}{4}
-\contentsline {section}{References}{5}
+\contentsline {section}{\numberline {7}Part II - Helge Hoff}{5}
+\contentsline {section}{References}{6}
