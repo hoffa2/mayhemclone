@@ -135,9 +135,13 @@ Collision between the two spaceships is handled by using the pygame sprite mask 
 \paragraph{}
 The bullets for the specific spaceship is in its own group which fasilitates the collision detection. Here the mask collide method is also used, and to check every bullet from one spaceship towards the other spaceship is done by getting a list of sprites that the sprite group contains. Then iterating through it and checking every bullet up against the spaceship. To get a list of the sprites in a group is simply done by setting a list equal to the specific group.
 \subsubsection{On pad detection}
+The pads "docking stations" are sprite object. Collision is deteceted with "sprite collide mask". To prevent one spaceship to fuel up on the other spaceships pad this is taken into account so spaceship one can only "collide" with the pads its assosiated with.
 \subsection{Player}
+The Player class hold all the parameters which is individual to a player. It has a spaceship, status and bullets. Also all the methods related to steering the spaceship is implemented in the player class. These methods alter the state of the spesific spaceship and its bullets.
 \paragraph{}
 \subsection{Game}
+\subsubsection{Rules}
+Each spaseship has a set of parameters which defines their state. These are, number of lives, score, fuel left, and bullets left. When one spaceship runs out of lives, it resets all it's stats and respawnes to the pad. However when a spaceship runs out of fuel, the thrust gets locked leading to no movement. Bullets and fuel gets refilled when a collision is detected to the right pad.
 \subsection{Spaceship}
 
  
@@ -203,7 +207,16 @@ This section starts with a list of requirements and an explanation on whether or
 	\end{itemize}
 \end{itemize}
 
+\begin{figure}
+\caption{Profiler output}
+\centering
+\includegraphics[scale=0.45]{profileing.png}
+\end{figure}
+
+
+
 \section{Conclusion}
+
 \paragraph{}
 
 

@@ -1,7 +1,6 @@
 """ A class to contain the game.
 .. Authors: Helge Hoff & Oystein Tveito
 """
-from pygame import sprite
 from spaceship import Spaceship
 import math
 from Lazer import Lazer

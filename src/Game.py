@@ -123,7 +123,6 @@ class Game(object):
 		""" Handles all the events thrown by pygame """
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
-				self.on_exit()
 				exit()
 			elif event.type == pygame.USEREVENT+1:
 				self.player1.lock = False
