@@ -122,16 +122,21 @@ The game is written in python, with pygame as it's most significant building blo
 \newpage
 
 \subsection{World}
+\paragraph{}
 The World class contains the screen on which all of the games objects are to be drawn. It also contains the backround image represented as a pygame surface type, the black hole, and the two platforms where the spaceships are spawned. The platforms is of type pygame sprite object aswell as the black hole represented in the middle of the screen where the spachips disappear into when drawing to close.
 \subsection{Text}
+\paragraph{}
 The text is as the requirements specified of type pygame sprite, and each status parameter of the spaceships is one objects which is put in a pygame sprite group. the text object has an update method which renders the text for later to be drawn. The different status attribute of the spaceships can be altered by changing the different objects values, value is an attribute of the text class.
 \subsection{Collision}
 \subsubsection{Spaceships}
+\paragraph{}
 Collision between the two spaceships is handled by using the pygame sprite mask collision method which has two sprites as input. Then the two spaceship sprites are sent in as arguments to the mask collide function. Then if collision they each looses lives.
 \subsubsection{Bullets}
-The bullets for the specific spaceship is in its own group which fasilitates the collision detection. Here the mask collide method is also used, and to check every bullet from one spaceship towards the other spaceship is done by getting a list of sprites that the sprite group contains. Then iterating through it and checking every bullet up against the spaceship. To get a a list of the sprites in a group is simply done by setting a list equal to the spesific group.
+\paragraph{}
+The bullets for the specific spaceship is in its own group which fasilitates the collision detection. Here the mask collide method is also used, and to check every bullet from one spaceship towards the other spaceship is done by getting a list of sprites that the sprite group contains. Then iterating through it and checking every bullet up against the spaceship. To get a list of the sprites in a group is simply done by setting a list equal to the specific group.
 \subsubsection{On pad detection}
 \subsection{Player}
+\paragraph{}
 \subsection{Game}
 \subsection{Spaceship}
 
@@ -201,64 +206,6 @@ This section starts with a list of requirements and an explanation on whether or
 \section{Conclusion}
 \paragraph{}
 
-\section{Part II - Øystein Tveito}
-\begin{itemize}
-\item[Q] 
-What is the difference between a class and an object?
-\item[A]
-A class is a template for an object, which has the blueprint for what data types and functionality an object will contain when created. No memory is allocated creating a class. An object on the other hand is an instance of a class, and an object holds the data specified by the class it is an object of.
-\paragraph{}
-\item[Q] 
-What is inheritance? What is the Python syntax for inheritance?
-\item[A]
-Inheritance is the process of building on an already defined class, and changing or adding data or behaviour, while keeping the functionality of the parent class. All public data and functions defined in the class the new class is inheriting from are preserved by default. If a function or data field with the same name is added to the new class, that will take presidents over the original, and will be used instead. In python a new class can inherit from an old class with this syntax in the declaration: class NewClass(OldClass):
-\paragraph{}
-\item[Q]
-What is the difference between a has-a and an is-a relationship?
-\item[A]
-An is-a relationship describes an object as an instance of that category. For instance a Macbook pro is a PC (personal computer). (YES it is).
-A has-a relationship describes something an object contain. For instance a Macbook pro has a CPU.
-\paragraph{}
-\item[Q] 
-What is encapsulation? How is encapsulation handled in Python?
-\item[A]
-First question: Encapsulation in this context can describe two things in OOP. It can describe the languages mechanism of restricting access to certain data fields or functions meant to be used internally by a class, or only be accessed by friendly classes which are defined. The second interpretation of the word is the bundling of data with the functionality created to manipulate or otherwise handle the data.
-Second question: For the first interpretation of the word it can be explained in one word: poorly. In more then one word: Python tries with the ability to name a variable or function with the prefix "\_\_", which will obscure the name of the data field or function by adding "\_className" as a prefix to it. This however is a terrible way of doing so, and with the ease of getting the real name, this is easy to abuse, and thereby less secure.
- For the second interpretation it handles it about the same way as any other OOP languages, like java, c++ among others.
-\paragraph{}
-\item[Q]
-What is polymorphism? Give examples of polymorphism from the precode and the Mayhem implementation
-\item[A]
-Polymorphism is the notion of inheriting one ore more new classes from one common parent (or a earlier ancestor) and then handle them as the common parent. For instance, a class named car can be the common ancestor for a Ferrari F60 and a Ford Fiesta. A boolean function openRightFrontWindow(car) can be written, designed to take in a car. Now both the F60 and the Fiesta can utilize this function (grated that the F60 is bought with electric windows which is extra on an F60 and not on an Fiesta).
-\end{itemize}
-
-\section{Part II - Helge Hoff}
-\begin{itemize}
-\item[Q] 
-What is the difference between a class and an object?
-\item[A]
-
-\paragraph{}
-\item[Q] 
-What is inheritance? What is the Python syntax for inheritance?
-\item[A]
-
-\paragraph{}
-\item[Q]
-What is the difference between a has-a and an is-a relationship?
-\item[A]
-
-\paragraph{}
-\item[Q] 
-What is encapsulation? How is encapsulation handled in Python?
-\item[A]
-
-\paragraph{}
-\item[Q]
-What is polymorphism? Give examples of polymorphism from the precode and the Mayhem implementation
-\item[A]
-
-\end{itemize}
 
 
 \begin{thebibliography}{9}
