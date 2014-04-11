@@ -123,7 +123,7 @@ The game is written in python, with pygame as it's most significant building blo
 
 \subsection{World}
 \paragraph{}
-The World class contains the screen on which all of the games objects are to be drawn. It also contains the backround image represented as a pygame surface type, the black hole, and the two platforms where the spaceships are spawned. The platforms is of type pygame sprite object aswell as the black hole represented in the middle of the screen where the spachips disappear into when drawing to close.
+The World class contains the screen on which all of the games objects are to be drawn. It also contains the background image represented as a pygame surface type, the black hole, and the two platforms where the spaceships are spawned. The platforms is of type pygame sprite object as well as the black hole represented in the middle of the screen where the spaceships disappear into when drawing to close.
 \subsection{Text}
 \paragraph{}
 The text is as the requirements specified of type pygame sprite, and each status parameter of the spaceships is one objects which is put in a pygame sprite group. the text object has an update method which renders the text for later to be drawn. The different status attribute of the spaceships can be altered by changing the different objects values, value is an attribute of the text class.
@@ -133,19 +133,22 @@ The text is as the requirements specified of type pygame sprite, and each status
 Collision between the two spaceships is handled by using the pygame sprite mask collision method which has two sprites as input. Then the two spaceship sprites are sent in as arguments to the mask collide function. Then if collision they each looses lives.
 \subsubsection{Bullets}
 \paragraph{}
-The bullets for the specific spaceship is in its own group which fasilitates the collision detection. Here the mask collide method is also used, and to check every bullet from one spaceship towards the other spaceship is done by getting a list of sprites that the sprite group contains. Then iterating through it and checking every bullet up against the spaceship. To get a list of the sprites in a group is simply done by setting a list equal to the specific group.
-Every time a bullets position is updated a method inside the Lazer class called "outofbounds" checks if the bullet has wandered off the screen and if so it is removed from the spesific bulletlist. The same goes for when the bullet gets in the black hole.
+The bullets for the specific spaceship is in its own group which facilitates the collision detection. Here the mask collide method is also used, and to check every bullet from one spaceship towards the other spaceship is done by getting a list of sprites that the sprite group contains. Then iterating through it and checking every bullet up against the spaceship. To get a list of the sprites in a group is simply done by setting a list equal to the specific group.
+Every time a bullets position is updated a method inside the Lazer class called "outofbounds" checks if the bullet has wandered off the screen and if so it is removed from the specific bullet list. The same goes for when the bullet gets in the black hole.
 \subsubsection{On pad detection}
-The pads "docking stations" are sprite object. Collision is deteceted with "sprite collide mask". To prevent one spaceship to fuel up on the other spaceships pad this is taken into account so spaceship one can only "collide" with the pads its assosiated with. 
+\paragraph{}
+The pads "docking stations" are sprite object. Collision is detected with "sprite collide mask". To prevent one spaceship to fuel up on the other spaceships pad this is taken into account so spaceship one can only "collide" with the pads its associated with. 
 \subsection{Player}
-The Player class hold all the parameters which is individual to a player. It has a spaceship, status and bullets. Also all the methods related to steering the spaceship is implemented in the player class. These methods alter the state of the spesific spaceship and its bullets.
+\paragraph{}
+The Player class hold all the parameters which is individual to a player. It has a spaceship, status and bullets. Also all the methods related to steering the spaceship is implemented in the player class. These methods alter the state of the specific spaceship and its bullets.
 \paragraph{}
 \subsection{Game}
 \subsubsection{Rules}
-Each spaseship has a set of parameters which defines their state. These are, number of lives, score, fuel left, and bullets left. When one spaceship runs out of lives, it resets all it's stats and respawnes to the pad. However when a spaceship runs out of fuel, the thrust gets locked leading to no movement. Bullets and fuel gets refilled when a collision is detected to the right pad.
+\paragraph{}
+Each spaceship has a set of parameters which defines their state. These are, number of lives, score, fuel left, and bullets left. When one spaceship runs out of lives, it resets all it's stats and respawnes to the pad. However when a spaceship runs out of fuel, the thrust gets locked leading to no movement. Bullets and fuel gets refilled when a collision is detected to the right pad.
 \subsection{Spaceship}
-
- 
+\paragraph{}
+The spaceship is a container for the image, position and velocity of the spaceship shown on screen. It also has methods for updating the position of itself. The class always keep the original image of itself as an extra variable to keep it from being destroyed with the transforms added to the image.
 
 
 
@@ -202,7 +205,7 @@ This section starts with a list of requirements and an explanation on whether or
 	\begin{itemize}
 		\item This requirement is met.
 	\end{itemize}
-	\item The last task is to profile the code using cProfiler. Take a screenshot of the result and include it in the report. Giva a short summary of the sesult and discuss where you would focus to imporve the performance of the implementation.
+	\item The last task is to profile the code using cProfiler. Take a screen shot of the result and include it in the report. Give a short summary of the result and discuss where you would focus to improve the performance of the implementation.
 	\begin{itemize}
 		\item 
 	\end{itemize}
@@ -214,30 +217,24 @@ This section starts with a list of requirements and an explanation on whether or
 \includegraphics[scale=0.45]{profileing.png}
 \end{figure}
 
+\paragraph{}
+When looking at the table above, showing the total time used in each function (only top 20), it shows that the handling of the graphics is by far the biggest time consumer in the game. Bliting each component to the screen for each tick takes time. One way to improve this time, is for instance to blit the solid objects to the background image \underline{once}, then only use the newly compiled image as the background for the game. This would be a fast and easy improvement, but there are only three static objects, namely the two pads and the black hole. This would help, but not noticeably.
+\paragraph{}
+On second place we have tick(). The fact that this is shown as number two is in itself a victory. This is basically the time we have left after all the operations of the game has been completed for the current frame. The more time the tick method uses, the less time the mechanics of the game are using.
+\paragraph{}
+On third place the pygame method flip() is represented. This is the method used to switch between the frame shown on the screen, and the active frame being worked on. This method is only used once per frame, but it is quite heavy because it has to draw pixel for pixel into the screen buffer. There is not to much to be done about this, though it would have been interesting to create an algorithm that used the update function of the screen to only update the parts of the display that actually changed in the new frame. This would potentially increase the performance of the game, because less of the screen would be redrawn at each frame.
+\paragraph{}
+For the next in line, we have to go down in time consumption with a factor of 10 from third. This makes everything in fourth place and down quite irrelevant for increasing the performance, because the amount of work needed to improve just a fraction of a millisecond at each frame will not be justified for this type of project. In projects like this, one should always try to improve the parts that uses the most amount of time, and worry about the smaller parts when the earnings from selling the game can justify the time used to fix them.
+
+
+
 
 
 \section{Conclusion}
-
 \paragraph{}
+All in all, the two authors are quite pleased with our project. It dos conform with all the requirements, and generally look good and is fun to play. There is always room for improvement, and some performance issues mentioned in the discussion part would be the place to start. Also, the game is an old school "no winner" game, where it will never stop, and you and a friend can play for ever trying to achieve the highest score feasible.
 
 
-
-\begin{thebibliography}{9}
-
-\bibitem{boids}
-  wikipedia.org,
-  \emph{Boids}:
-  http://en.wikipedia.org/w/index.php?title=Boids\&oldid=580365466 
-  [Online; accessed 26-02-2013]
-  
-\bibitem{leap}
-  wikipedia.org,
-  \emph{Leap}:
-  http://en.wikipedia.org/w/index.php?title=Leap\_Motion\&oldid=592637003
-  [Online; accessed 03-03-2013]
-  
-
-\end{thebibliography}
 
 
 

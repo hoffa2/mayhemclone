@@ -19,13 +19,20 @@
 \contentsline {subsubsection}{\numberline {3.3.2}Bullets}{4}
 \contentsline {paragraph}{}{4}
 \contentsline {subsubsection}{\numberline {3.3.3}On pad detection}{4}
+\contentsline {paragraph}{}{4}
 \contentsline {subsection}{\numberline {3.4}Player}{4}
+\contentsline {paragraph}{}{4}
 \contentsline {paragraph}{}{4}
 \contentsline {subsection}{\numberline {3.5}Game}{5}
 \contentsline {subsubsection}{\numberline {3.5.1}Rules}{5}
+\contentsline {paragraph}{}{5}
 \contentsline {subsection}{\numberline {3.6}Spaceship}{5}
+\contentsline {paragraph}{}{5}
 \contentsline {section}{\numberline {4}Discussion}{5}
 \contentsline {paragraph}{}{5}
-\contentsline {section}{\numberline {5}Conclusion}{6}
-\contentsline {paragraph}{}{6}
-\contentsline {section}{References}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{7}
+\contentsline {paragraph}{}{8}
+\contentsline {section}{\numberline {5}Conclusion}{8}
+\contentsline {paragraph}{}{8}
