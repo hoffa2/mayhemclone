@@ -149,7 +149,8 @@ Each spaceship has a set of parameters which defines their state. These are, num
 \subsection{Spaceship}
 \paragraph{}
 The spaceship is a container for the image, position and velocity of the spaceship shown on screen. It also has methods for updating the position of itself. The class always keep the original image of itself as an extra variable to keep it from being destroyed with the transforms added to the image.
-
+\subsection{Bullets}
+A bullet is a pygame sprite containing a pygame surface as image (ellipse). The bullet has the the velocity of the spaceships angel on release, also it gets rotatet according to the spaceship upon release. Also the release point of the bullet(drawn first time) is equal to the spaships centerposition when key to trigger shot is pressed
 
 
 \section{Discussion}

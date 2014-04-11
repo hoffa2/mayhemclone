@@ -28,6 +28,7 @@
 \contentsline {paragraph}{}{5}
 \contentsline {subsection}{\numberline {3.6}Spaceship}{5}
 \contentsline {paragraph}{}{5}
+\contentsline {subsection}{\numberline {3.7}Bullets}{5}
 \contentsline {section}{\numberline {4}Discussion}{5}
 \contentsline {paragraph}{}{5}
 \contentsline {paragraph}{}{7}
